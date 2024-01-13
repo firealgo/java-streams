@@ -1,10 +1,10 @@
 package streamDemo;
 
-import collectorsDemo.EmpService;
 import dao.EmpDao;
 import entity.Emp;
 
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -29,9 +29,20 @@ public class StreamDemo {
 //        _02_findColorWhichStartsWithB();
         // 03 find frequency of numbers
 //        _03_findFrequencyOfNumbers();
-        _03_findFrequencyOfColors();
+//        _03_findFrequencyOfColors();
+        _04_reduce();
 
 
+    }
+
+    private static void _04_reduce() {
+        // 1 2 3 4
+        OptionalInt reduced =
+                IntStream.range(1, 5).reduce((a, b) -> a + b);
+        System.out.println(reduced.getAsInt());
+        int multiply =
+                IntStream.of().reduce(5,(a, b) -> a * b);
+        System.out.println(multiply);
     }
 
     private static void _03_findFrequencyOfColors() {

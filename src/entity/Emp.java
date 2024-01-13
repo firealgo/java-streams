@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Objects;
+
 public class Emp {
     final private int id;
     final private String firstName;
@@ -17,13 +19,13 @@ public class Emp {
 
     @Override
     public String toString() {
-        return "Emp{" +
+        return "\n{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
                 ", dept='" + dept + '\'' +
-                '}' + "\n";
+                '}';
     }
 
     public int getId() {
@@ -51,5 +53,16 @@ public class Emp {
         return dept;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Emp emp = (Emp) o;
+        return getId() == emp.getId();
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 }
